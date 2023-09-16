@@ -1,0 +1,68 @@
+/* Updated styles for the navbar with a beautiful design and background color */
+
+
+header {
+    margin: 0;
+  padding: 0;
+    background: linear-gradient(45deg, #ACACA7, #adece7, #ACACA7);
+        /* padding: 8px ; */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 20px; */
+  }
+  
+  .navbar-brand a {
+    font-size: 28px; /* Increase font size */
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    /* padding: 10px 20px;  */
+    border-radius: 5px; /* Add rounded corners */
+    background: linear-gradient(45deg, #f62e56, #020544, #f20434); /* Gradient background */
+    background-clip: text; /* Apply gradient to text */
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    -webkit-text-fill-color: transparent; /* Make text transparent so gradient is visible */
+    transition: background 0.3s, transform 0.3s; /* Add transition for hover effect */
+  }
+  
+  
+  .nav-list {
+    list-style: none;
+    /* padding: 0; */
+    display: flex;
+  }
+  
+  .nav-list li {
+    margin-right: 30px; /* Increased spacing between links */
+    position: relative;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+    /* padding-bottom: 5px; */
+  }
+  
+  .nav-list a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: palevioletred; /* Change the underline color */
+    transition: width 0.3s;
+  }
+  
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+  

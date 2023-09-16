@@ -1,0 +1,110 @@
+
+/* Style for the product page heading */
+.product-page-heading {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #FF6B6B, #26577C, #45A29E); /* Gradient background with multiple colors */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hide the text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  }
+  
+
+/* Style for the product cards */
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between;  */
+    justify-content: center;
+    margin: -10px; /* Add negative margin to offset card margin */
+  }
+  
+  .product-card {
+    width: calc(20% - 10px); /* 4 cards in a row (with margin) for default screen size */
+    margin: 10px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+  }
+  
+  /* Style for the product card image */
+  .product-image img {
+    max-width: 100%;
+    height: 240px
+  }
+  
+  /* Hover effect for product cards */
+  .product-card:hover {
+    transform: translateY(-10px); /* Move the card up slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a larger shadow on hover */
+    cursor: pointer;
+    border: 1px solid #E4F1FF;
+  }
+  
+  /* Style for the product details */
+  .product-details h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  .product-weight,
+  .product-price {
+    font-size: 16px;
+  }
+  
+
+/* Style for the "Add to cart" button */
+.add-to-cart-button {
+    background: linear-gradient(45deg, #45A29E, #66FCF1); /* Gradient background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    outline: none;
+  }
+  
+  .add-to-cart-button:hover {
+    background: linear-gradient(45deg, #66FCF1, #45A29E); /* Gradient background on hover */
+    transform: scale(1.05); /* Increase button size on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-to-cart-button:active {
+    transform: scale(0.95); /* Reduce button size on click */
+  }
+  
+  
+  /* Media queries for responsive design */
+  @media screen and (max-width: 800px) {
+    .product-card {
+      width: calc(33.33% - 20px); /* 3 cards in a row for medium screen size */
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .product-card {
+      width: calc(50% - 20px); /* 2 cards in a row for small screen size */
+    }
+  }
+  
+  @media screen and (max-width: 380px) {
+    .product-card {
+      width: calc(100% - 20px); /* 1 card per row for screens less than 380px */
+    }
+  }
+  
