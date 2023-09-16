@@ -8,13 +8,12 @@ import { Observable } from 'rxjs';
 export class ProductService {
   private productsUrl = '/assets/data.json';
 
-  constructor(private http: HttpClient) {} // Ensure HttpClient is injected here
+  constructor(private http: HttpClient) {} 
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl);
   }
 
-  // You can add more methods for managing product data as needed
 }
 
 export interface Product {

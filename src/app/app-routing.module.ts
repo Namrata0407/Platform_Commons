@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'cart', component: CartPageComponent },
   { path: 'order', component: OrdersPageComponent },
 
-  // Define more routes as needed
 ];
 
 @NgModule({

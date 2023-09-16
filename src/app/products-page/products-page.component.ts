@@ -7,86 +7,81 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./products-page.component.css']
 })
 export class ProductsPageComponent implements OnInit {
-  jsonData: any; // Declare a variable to store your JSON data
-  products: Product[] = []; // Initialize an empty array to store products
+  jsonData: any; 
+  newData: Product[] = []; 
  cartProducts : any[] = [];
- productsInCart: any[] = [];
-  // constructor(private http: HttpClient) { }
+ cartData: any[] = [];
   constructor(
-    // private productService: ProductService,
-    // private cartService: CartService, // Inject CartService
+    
     private http: HttpClient
   ) {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
-      this.productsInCart = JSON.parse(cartData);
+      this.cartData = JSON.parse(cartData);
     }
   }
   ngOnInit(): void {
-    // Load your JSON data here and assign it to this.jsonData
     this.http.get('/assets/data.json').subscribe(data => {
       this.jsonData = data;
-      // Initialize products with quantity
-      this.products = this.jsonData.product_Data.map((product: any) => ({
+      this.newData = this.jsonData.product_Data.map((product: any) => ({
         ...product,
         quantity: 0
       }));
     });
   }
 
-  // addToCart(product: Product): void {
-  //   const cartProduct = this.products.find(p => p.id === product.id);
+ 
 
-  //   if (cartProduct) {
-  //     cartProduct.quantity = 1; // Set quantity to 1 when adding to cart
-  //   }
-  // }
-  // addToCart(product: any): void {
-  //   const cartItem = this.cartProducts.find((item) => item.product === product.id);
-  //   if (cartItem) {
-  //     console.log(cartItem,);
-  //     cartItem.quantity++;
-  //     localStorage.setItem("cart",JSON.stringify(this.cartProducts))
-  //   } else {
-  //     console.log(product);
-  //     this.cartProducts.push({...product, product: product.id, quantity: 1 });
-  //     localStorage.setItem("cart",JSON.stringify(this.cartProducts))
-  //   }
-  // }
-
-checkquantity(product: any):any{
-  const cartItem = this.cartProducts.find((item) => item.product === product.id);
-  if(cartItem){
-    return true;
-  }else{
-    return false
-  }
-}
-  decreaseQuantity(product: Product): void {
-    if (product.quantity > 0) {
-      product.quantity--;
-
-      if (product.quantity === 0) {
-        // Reset to "Add to Cart" button when quantity reaches 0
-        product.quantity = 0;
-      }
+decreaseItems(product: any): void {
+  const cartItem = this.cartData.find((item) => item.product === product.id);
+  if (cartItem && cartItem.quantity > 0) {
+    if (cartItem.quantity === 1) {
+      cartItem.quantity--;
+      product.quantity = cartItem.quantity;
+      const filteredItem = this.cartData.filter((el, i) => el.product !== product.id);
+      this.cartData = filteredItem;
+      localStorage.setItem("cart", JSON.stringify(filteredItem))
+    } else {
+      cartItem.quantity--;
+      product.quantity = cartItem.quantity;
+      localStorage.setItem("cart", JSON.stringify(this.cartData))
     }
   }
+}
 
-  increaseQuantity(product: Product): void {
-    product.quantity++;
+increaseItems(product: any): void {
+    const cartItem = this.cartData.find((item) => item.product === product.id);
+    if (cartItem) {
+      cartItem.quantity++
+      product.quantity = cartItem.quantity;
+      localStorage.setItem("cart", JSON.stringify(this.cartData));
+    } else {
+      this.cartData.push({ ...product, product: product.id, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(this.cartData));
+    }
+
   }
 
   addToCart(product: any): void {
-    const cartItem = this.productsInCart.find((item) => item.product === product.id);
+    const cartItem = this.cartData.find((item) => item.product === product.id);
     if (cartItem) {
       console.log(cartItem,);
       cartItem.quantity++;
-      localStorage.setItem("cart",JSON.stringify(this.productsInCart))
+      localStorage.setItem("cart",JSON.stringify(this.cartData))
     } else {
       console.log(product);
-      this.productsInCart.push({...product, product: product.id, quantity: 1 });
-      localStorage.setItem("cart",JSON.stringify(this.productsInCart))
+      this.cartData.push({...product, product: product.id, quantity: 1 });
+      localStorage.setItem("cart",JSON.stringify(this.cartData))
+    }
+  }
+
+
+  itemPresent(product: any): any {
+    const cartItem = this.cartData.find((item) => item.product === product.id);
+    if(cartItem){
+      return true;
+    }else{
+      return false;
     }
   }
 }

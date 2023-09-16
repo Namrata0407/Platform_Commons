@@ -18,7 +18,7 @@ import { OrdersPageComponent } from './orders-page/orders-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // Add HttpClientModule here
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

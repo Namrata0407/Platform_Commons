@@ -7,25 +7,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent {
-  productsInCart: any[] = [];
-  // constructor(private http: HttpClient) { }
+  cartData: any[] = [];
   constructor(
-    // private productService: ProductService,
-    // private cartService: CartService, // Inject CartService
+   
     private http: HttpClient
   ) {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
-      this.productsInCart = JSON.parse(cartData);
+      this.cartData = JSON.parse(cartData);
     }
   }
 
-  removeItem(product: any): void {
-    const filteredItem = this.productsInCart.filter((el, i) => el.product !== product.id);
-    this.productsInCart = filteredItem;
-    localStorage.setItem("cart", JSON.stringify(filteredItem))
-    //  'Item removed from the cart';
+  dataPresent(){
+    if(this.cartData.length > 0){
+      return true;
+    }else{
+      return false;
+    }
   }
+  
+  deleteData(product: any): void {
+    const filteredItem = this.cartData.filter((el, i) => el.product !== product.id);
+    this.cartData = filteredItem;
+    localStorage.setItem("cart", JSON.stringify(filteredItem))
+    alert('Product removed successfully ⚠️');
+
+}
 
   placeOrder(){
     window.open("/order","_self")

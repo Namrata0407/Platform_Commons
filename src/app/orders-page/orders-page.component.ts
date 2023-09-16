@@ -7,21 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./orders-page.component.css']
 })
 export class OrdersPageComponent {
-  productsInCart: any[] = [];
-  // constructor(private http: HttpClient) { }
+  cartData: any[] = [];
   constructor(
-    // private productService: ProductService,
-    // private cartService: CartService, // Inject CartService
+   
     private http: HttpClient
   ) {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
-      this.productsInCart = JSON.parse(cartData);
+      this.cartData = JSON.parse(cartData);
     }
   }
 
   placeOrder(){
-    alert("order has been placed successfully");
+    alert("order has been placed successfully 🎉🎉");
     window.open("/catalogue","_self")
   }
 }

@@ -1,35 +1,26 @@
-<h1 class="product-page-heading">Welcome to the Product Page</h1>
+<h1 class="product-page-heading">Welcome to the Catalogue</h1>
 
 <div class="product-cards">
-  <div class="product-card" *ngFor="let product of products">
+  <div class="product-card" *ngFor="let product of newData">
     <div class="product-image">
       <img [src]="product.Image" alt="{{ product.Name }}" />
     </div>
     <div class="product-details">
       <h2>{{ product.Name }}</h2>
-      <p class="product-weight">Weight: {{ product.Weight }}</p>
       <p class="product-price">Price: ${{ product.Price }}</p>
-      <!-- Show quantity control or "Add to Cart" button based on product quantity -->
-      <!-- <ng-container *ngIf="!checkquantity(product)" >
-        <button class="add-to-cart-button" (click)="addToCart(product)">Add to cart</button>
-      </ng-container>
-      <ng-container *ngIf="!checkquantity(product)">
-        <div class="quantity-control">
-          <button (click)="decreaseQuantity(product)">(-)</button>
-          <span>{{ item.quantity }}</span>
-          <button (click)="increaseQuantity(product)">(+) </button>
-        </div>
-      </ng-container> -->
 
-      <div *ngIf="product.id > 0" class="quantity-control">
-        <button >-</button>
-        <div *ngFor="let item of productsInCart">
-            <span *ngIf="item.id === product.id">{{ item.quantity || 0 }}</span>
+      <div *ngFor="let element of cartData">
+        <div *ngIf="itemPresent(product) && element.id === product.id">
+          <button (click)="decreaseItems(product)">-</button>
+          <span *ngIf="element.id === product.id">{{ element.quantity || 0 }}</span>
+          <button (click)="increaseItems(product)">+</button>
         </div>
-        <button >+</button>
-    </div>
-    <button (click)="addToCart(product)" class="btn btn-danger">Add to Cart</button>
-
+      </div>
+      <div *ngIf="!itemPresent(product)">
+        <button (click)="addToCart(product)" class="add-to-cart-button">
+          Add to Cart
+        </button>
+      </div>
     </div>
   </div>
 </div>
