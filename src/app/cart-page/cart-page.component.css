@@ -153,6 +153,7 @@
   font-weight: bold;
   margin-bottom: 39px;
 }
+
 .empty_cart {
   text-align: center;
   margin-top: 160px;
@@ -175,4 +176,59 @@
   .product-card {
     width: calc(100% - 20px);
   }
+}
+
+
+
+/* Styles for Payment Summary Section */
+.payment-summary {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.bill-header {
+  background-color: #5FE7DE;
+  color:black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.bill-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.bill-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.bill-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bill-table tr:last-child td {
+  border-bottom: none;
+}
+
+.checkout-button {
+  background-color: #5FE7DE;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.checkout-button:hover {
+  background-color: #4AC6B7;
 }

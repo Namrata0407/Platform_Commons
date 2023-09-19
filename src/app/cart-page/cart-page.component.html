@@ -1,9 +1,9 @@
 <h1 class="product-page-heading">Welcome to the Cart Page</h1>
 
-<div *ngIf="dataPresent()">
+<!-- <div *ngIf="dataPresent()">
   <button (click)="placeOrder()" class="checkout-button">CheckOut</button>
   <p *ngIf="totalPriceOFData()" class="total_price">Total price: ${{totalPrice}}</p>
-</div>
+</div> -->
 
 <div class="product-cards">
   <div class="product-card" *ngFor="let product of cartData">
@@ -22,6 +22,29 @@
     </div>
   </div>
 </div>
+ <!-- Payment summary section -->
+ <div class="payment-summary"  *ngIf="dataPresent()">
+  <div class="bill-header">
+    <h2>Payment Summary</h2>
+  </div>
+  <table class="bill-table">
+    <tr>
+      <td>Total Items:</td>
+      <td>{{ cartData.length }}</td>
+    </tr>
+    <tr>
+      <td>Total Price:</td>
+      <td  *ngIf="totalPriceOFData()">${{ totalPrice }}</td>
+    </tr>
+    <tr>
+      <td>Estimated Delivery:</td>
+      <td>2-3 working days</td>
+    </tr>
+  </table>
+  <button (click)="placeOrder()" class="checkout-button">Check Out</button>
+</div>
+
+
 <div *ngIf="!dataPresent()">
   <h1 class="empty_cart">Your have 0 item in the cart</h1>
 </div>
