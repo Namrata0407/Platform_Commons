@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CartPageComponent {
   cartData: any[] = [];
+  totalPrice: Number = 0;
   constructor(
    
     private http: HttpClient
@@ -26,6 +27,17 @@ export class CartPageComponent {
     }
   }
   
+  totalPriceOFData(){
+    let newdata: any = 0;
+    if(this.cartData.length > 0){
+      for(let i=0; i<this.cartData.length; i++){
+        newdata += this.cartData[i].Price*this.cartData[i].quantity;
+      }
+      this.totalPrice = (newdata).toFixed(2);
+    }
+    return this.totalPrice;
+  }
+
   deleteData(product: any): void {
     const filteredItem = this.cartData.filter((el, i) => el.product !== product.id);
     this.cartData = filteredItem;

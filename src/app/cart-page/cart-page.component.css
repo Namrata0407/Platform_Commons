@@ -148,6 +148,11 @@
   }
 }
 
+.total_price{
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 39px;
+}
 .empty_cart {
   text-align: center;
   margin-top: 160px;
